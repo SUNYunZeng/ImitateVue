@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{person.name}} -- {{person.age}}</h2>
+        <h3>爱好：{{person.fav}}</h3>
+        <h3>msg提示：{{msg}}</h3>
+        <div v-text='msg'></div>
+        <div v-text='person.name'></div>
+        <div v-html='htmlStr'></div>
+        <p><a v-bind:href="https://www.bilibili.com/video/av80611222?p=3">v-bind绑定的href属性</a></p>
+        <input type="text" v-model='msg'>
+        <button v-on:click="handleClick">v-on:click</button>
+        <button @click="handleClick">@click</button>      
+    </div>
+    <script src="./MVue.js"></script>
+    <script>
+        let vm = new MVue({
+            el: '#app',
+            data: {
+                person: {
+                    name: '海贼——王路飞',
+                    age: 18,
+                    fav: 'film'
+                },
+                msg: 'msg的内容',
+                htmlStr: '<h3>这是v-html</h3>'
+            },
+            methods:{
+                handleClick: function(){
+                    console.log('这是一个处理点击事件的方法');
+                    this.person.name = '海贼王——路飞'
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
