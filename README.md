@@ -278,7 +278,6 @@ class Observer{
                 if(newVal !== value){
                     this.observe(newVal);
                     value = newVal;
-                    console.log(newVal);
                 }
             }
         })
@@ -321,7 +320,6 @@ class Watcher{
     getOldVal(){
         // 在利用getValue获取数据调用getter()方法时先把当前观察者挂载
         Dep.target = this;
-        console.log(Dep.target);
         const oldVal = compileUtil.getValue(this.expr, this.vm);
         // 挂载完毕需要注销，防止重复挂载 (数据一更新就会挂载)
         Dep.target = null;
