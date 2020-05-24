@@ -86,8 +86,13 @@ const compileUtil = {
         }, vm.$data)
     },
     setVal(expr, vm, inputValue){
-        expr.split('.').reduce((data,currentVal)=>{
-            data[currentVal] = inputValue;
+        let exprs = expr.split('.'), len = exprs.length;
+        exprs.reduce((data,currentVal, idx)=>{
+            if(idx===len-1){
+                data[currentVal] = inputValue;
+            }else{
+                return data[currentVal]
+            }
         }, vm.$data)
     },
     getContent(expr, vm){

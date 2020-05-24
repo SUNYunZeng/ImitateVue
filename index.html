@@ -12,12 +12,12 @@
     <div id="app">
         <h2>{{person.name}} -- {{person.age}}</h2>
         <h3>爱好：{{person.fav}}</h3>
-        <h3>msg提示：{{msg}}</h3>
-        <div v-text='msg'></div>
+        <h3>msg提示：{{msg.text}}</h3>
+        <div v-text='msg.text'></div>
         <div v-text='person.name'></div>
         <div v-html='htmlStr'></div>
         <p><a v-bind:href="https://www.bilibili.com/video/av80611222?p=3">v-bind绑定的href属性</a></p>
-        <input type="text" v-model='msg'>
+        <input type="text" v-model='msg.text'>
         <button v-on:click="handleClick">v-on:click</button>
         <button @click="handleClick">@click</button>      
     </div>
@@ -31,7 +31,9 @@
                     age: 18,
                     fav: 'film'
                 },
-                msg: 'msg的内容',
+                msg: {
+                    text: 'msg的内容'
+                },
                 htmlStr: '<h3>这是v-html</h3>'
             },
             methods:{
